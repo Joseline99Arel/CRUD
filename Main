@@ -1,0 +1,94 @@
+package Listas;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class Principal {
+    public static void main (String []args){
+    Scanner entrada = new Scanner (System.in);
+    
+    List<Integer> Numeros = new ArrayList<>();
+    int Lugar, Dato;
+    int a=1, Respuesta=0;
+    
+    
+    while(a==1){
+        System.out.println("Elige una opcion");
+        System.out.println("1.- Insertar un Dato");
+        System.out.println("2.- Mostar tu Lista");
+        System.out.println("3.- Actualizar la Lista");
+        System.out.println("4.- Borrar");
+        System.out.println("5.- Salir");
+        Respuesta=entrada.nextInt();
+            
+        if(Respuesta>0 && Respuesta<6){
+            switch(Respuesta){
+                case 1: 
+                    System.out.println("Inserta un numero");
+                    Dato=entrada.nextInt();
+                    Numeros.add(Dato);
+                break;
+                case 2: 
+                    if(Numeros.size()>0){
+                    System.out.println("Los datos de tu lista son: ");
+                    System.out.println(Numeros);
+                    }
+                    else{
+                    System.out.println("No se encontraron datos en la lista");
+                    }
+                break;
+                case 3: 
+                    if(Numeros.size()>0){
+                    System.out.println("Tu lista se encuntra de la siguiente manera: ");
+                    System.out.println(Numeros);
+                    System.out.println("¿Cual es la posicion que deceas cambiar?");
+                    Lugar=entrada.nextInt();
+                    System.out.println("¿Ingresa el nuevo dato");
+                    Dato=entrada.nextInt();
+                    Numeros.set(Lugar-1,Dato);
+                    }
+                    else{
+                    System.out.println("No se encontraron datos en la lista");
+                    }
+                break;
+                case 4: 
+                    int Res;
+                    System.out.println("Elige una opcion");
+                    System.out.println("1.- borrar la lista completa");
+                    System.out.println("2.- borrar un elemento de la lista");
+                    Res=entrada.nextInt();
+                    if (Res==1){
+                        Numeros.clear();
+                        System.out.println("Lista borrada");
+                    }
+                    if (Res==2){
+                        if(Numeros.size()>0){
+                            System.out.println("Tu lista se encuntra de la siguiente manera: ");
+                            System.out.println(Numeros);
+                            System.out.println("¿Elige la posicion que deceas Borrar?");
+                            Lugar=entrada.nextInt();
+                            if (Lugar <= Numeros.size()-1){
+                                Numeros.remove(Lugar-1);
+                            }
+                            else{
+                                System.out.println("No se encontro la posicion");
+                            }
+                        }
+                        else{
+                            System.out.println("No hay datos en la lista");
+                        }
+                    }
+                break;
+                case 5: 
+                    System.exit(0);
+                break; 
+            }
+            System.out.println("Quieres repetir el proceso 1:Si 2:No");
+            a=entrada.nextInt();
+            }
+            else
+            {
+                System.out.println("El numero que ingresaste esta fuera de las opciones ");
+            }
+        }     
+    }
+}
